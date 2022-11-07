@@ -12,7 +12,7 @@ scalar=pickle.load(open('scaling.pkl','rb'))
 
 @app.route('/')
 def home():
-    return render_template('hh.html')
+    return render_template('home.html')
 
 @app.route('/predict_api',methods=['POST'])
 def predict_api():
@@ -30,7 +30,7 @@ def predict():
     final_input=scalar.transform(np.array(data).reshape(1,-1))
     print(final_input)
     output=regression.predict(final_input)[0]
-    return render_template("hh.html",prediction_text="The House price prediction is {}".format(output))
+    return render_template("home.html",prediction_text="The House price prediction is {}".format(output))
    
 if __name__=="__main__":
     app.run(debug=True)
